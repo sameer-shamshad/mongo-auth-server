@@ -47,9 +47,11 @@ coverage/
 tsconfig.tsbuildinfo
 
 # TypeScript output (if using ts-node or tsc)
-*.js
-*.js.map
-*.d.ts
+# Note: *.js is removed since this is a JavaScript project
+# If you convert to TypeScript later, uncomment these:
+# *.js
+# *.js.map
+# *.d.ts
 
 # Express upload temp files (if any)
 uploads/
