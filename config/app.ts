@@ -2,10 +2,8 @@ import cors from "cors";
 import express, { type Express, type Request, type Response, type NextFunction } from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import { ALLOWED_ORIGINS } from "./env.config.js";
+// import { ALLOWED_ORIGINS } from "./env.config.js";
 
-// Middlewares
-import { verifyToken } from "../middlewares/verifyToken.js";
     
 // Routes
 import authRouter from "../routes/auth.route.js";
@@ -22,7 +20,7 @@ app.use(cookieParser());
 
 app.use(cors({ 
     credentials: true,
-    origin: ALLOWED_ORIGINS,
+    origin: "*",
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"]
 }));
 
