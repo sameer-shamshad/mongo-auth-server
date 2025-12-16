@@ -5,26 +5,20 @@ interface RegisterRequestBody {
   email: string;
   username: string;
   password: string;
-  confirmPassword: string;
 }
 
 export const registerUser = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const { email, username, password, confirmPassword }: RegisterRequestBody = req.body;
+    const { email, username, password }: RegisterRequestBody = req.body;
 
     // Validate all fields are provided
-    if (!username?.trim() || !email?.trim() || !password || !confirmPassword) {
+    if (!username?.trim() || !email?.trim() || !password) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
     // Validate password length
     if (password.length < 7) {
       return res.status(400).json({ message: "The password must be at least 7 characters long." });
-    }
-
-    // Validate password match
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: "Passwords do not match." });
     }
 
     // Check if user already exists
